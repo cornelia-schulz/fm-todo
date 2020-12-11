@@ -2,10 +2,13 @@ var path = require('path')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
+  },
+  resolve: {
+    extensions: [".js", ".jsx", ".json", ".ts", ".tsx"]
   },
   module: {
     rules: [
@@ -16,6 +19,10 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(ts|tsx)$/,
+        loader: "awesome-typescript-loader",
       }
     ]
   },
